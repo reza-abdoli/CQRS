@@ -12,6 +12,7 @@ namespace HR_Management_Application.Persistence.Contracts
         Task<T> Add(T entity);
         Task<T> Update(T entity);
         Task<T> Delete(T entity);
+        Task<bool> Exists(int id);
 
         // Task<T> Get(int id);
         Task<List<T>> GetAll();
