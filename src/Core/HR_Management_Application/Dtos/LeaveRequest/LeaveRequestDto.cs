@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HR_Management_Application.Dtos.Common;
+using HR_Management_Application.Dtos.LeaveRequest;
 
 namespace HR_Management_Application.Dtos
 {
-    public class LeaveRequestDto : BaseDto
+    public class LeaveRequestDto : BaseDto, ILeaveRequestDto
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

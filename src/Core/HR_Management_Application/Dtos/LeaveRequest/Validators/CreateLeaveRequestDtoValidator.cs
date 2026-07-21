@@ -9,34 +9,13 @@ namespace HR_Management_Application.Dtos.LeaveRequest.Validators
 {
     public class CreateLeaveRequestDtoValidator : AbstractValidator<CreateLeaveRequestDto>
     {
-        private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly ILeaveTypeRepository _leaveTypeRepository; 
 
-        public CreateLeaveRequestDtoValidator(ILeaveRequestRepository leaveRequestRepository)
+        public CreateLeaveRequestDtoValidator(ILeaveTypeRepository leaveTypeRepository)
         {
-            _leaveRequestRepository = leaveRequestRepository;
+            _leaveTypeRepository = leaveTypeRepository;
 
-            RuleFor(q => q.StartDate)
-                .NotNull()
-                .WithMessage("{PropertyName} is required.")
-                .LessThan(q => q.EndDate)
-                .WithMessage("{PropertyName} must be before {ComparisonValue}.");
-
-            RuleFor(q => q.EndDate)
-                .NotNull()
-                .WithMessage("{PropertyName} is required.")
-                .GreaterThan(q => q.StartDate)
-                .WithMessage("{PropertyName} must be after {ComparisonValue}.");
-
-            RuleFor(q => q.LeaveTypeId)
-                .NotNull()
-                .WithMessage("{PropertyName} is required.")
-                .GreaterThan(0)
-                .MustAsync(async (id, token) =>
-                {
-                    var res = await _leaveRequestRepository.Exists(id);
-                    return !res;
-                })
-                .WithMessage("{PropertyName} does not exist");
+            Include(new ILeaveRequestDtoValidator(_leaveTypeRepository));
         }
     }
 }

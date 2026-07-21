@@ -9,7 +9,7 @@ namespace HR_Management_Application.Dtos.LeaveRequest
     {
         public LeaveTypeDto LeaveType { get; set; }
         public DateTime DateRequested { get; set; }
-        public bool? Aoorived { get; set; }
+        public bool? Approved { get; set; }
 
     }
 }
