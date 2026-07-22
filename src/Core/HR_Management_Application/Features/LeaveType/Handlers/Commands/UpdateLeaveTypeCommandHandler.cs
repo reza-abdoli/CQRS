@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using HR_Management_Application.Dtos.LeaveType.Validators;
+using HR_Management_Application.Exceptions;
 using HR_Management_Application.Features.LeaveType.Requests.Commands;
 using HR_Management_Application.Persistence.Contracts;
 using MediatR;
@@ -28,7 +29,7 @@ namespace HR_Management_Application.Features.LeaveType.Handlers.Commands
             var res = await validator.ValidateAsync(request.LeaveTypeDto);
             if (res.IsValid != false)
             {
-                throw new Exception();
+                throw new ValidationException(res);
             }
             var leaveType = await _leaveTypeRepository.Get(request.LeaveTypeDto.Id);
             _mapper.Map(request.LeaveTypeDto, leaveType);

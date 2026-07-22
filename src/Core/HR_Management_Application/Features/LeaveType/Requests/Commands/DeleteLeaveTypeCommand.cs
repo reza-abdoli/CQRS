@@ -8,6 +8,6 @@ namespace HR_Management_Application.Features.LeaveType.Requests.Commands
 {
     public class DeleteLeaveTypeCommand : IRequest
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

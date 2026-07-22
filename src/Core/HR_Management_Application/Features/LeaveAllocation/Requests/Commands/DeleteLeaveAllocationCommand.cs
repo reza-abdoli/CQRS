@@ -8,6 +8,6 @@ namespace HR_Management_Application.Features.LeaveAllocation.Requests.Commands
 {
     public class DeleteLeaveAllocationCommand : IRequest
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

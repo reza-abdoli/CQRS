@@ -6,9 +6,9 @@ using FluentValidation;
 
 namespace HR_Management_Application.Dtos.LeaveType.Validators
 {
-    public class CreateLeaveTypeValidator : AbstractValidator<CreateLeaveTypeDto>
+    public class CreateLeaveTypeDtoValidator : AbstractValidator<CreateLeaveTypeDto>
     {
-        public CreateLeaveTypeValidator()
+        public CreateLeaveTypeDtoValidator()
         {
             Include(new ILeaveTypeValidator());
         }
