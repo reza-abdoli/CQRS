@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
-using HR_Management_Application.Persistence.Contracts;
+using HR_Management_Application.Contracts.Persistence;
 
 namespace HR_Management_Application.Dtos.LeaveRequest.Validators
 {

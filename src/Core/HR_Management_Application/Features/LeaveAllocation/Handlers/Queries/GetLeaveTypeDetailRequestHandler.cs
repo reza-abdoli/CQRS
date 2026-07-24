@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HR_Management_Application.Dtos;
 using HR_Management_Application.Features.LeaveAllocation.Requests.Queries;
-using HR_Management_Application.Persistence.Contracts;
+using HR_Management_Application.Contracts.Persistence;
 using MediatR;
 
 namespace HR_Management_Application.Features.LeaveAllocation.Handlers.Queries

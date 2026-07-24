@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HR_Management_Application.Exceptions;
 using HR_Management_Application.Features.LeaveType.Requests.Commands;
-using HR_Management_Application.Persistence.Contracts;
+using HR_Management_Application.Contracts.Persistence;
 using MediatR;
 
 namespace HR_Management_Application.Features.LeaveType.Handlers.Commands
