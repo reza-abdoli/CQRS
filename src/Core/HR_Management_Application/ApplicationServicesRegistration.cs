@@ -14,6 +14,7 @@ namespace HR_Management_Application
         {
             // services.AddAutoMapper(typeof(MappingProfile));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         }
     }
 }

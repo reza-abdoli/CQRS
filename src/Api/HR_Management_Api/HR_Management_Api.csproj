@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\HR_Management_Domain\HR_Management_Domain.csproj" />
+    <ProjectReference Include="..\..\Core\HR_Management_Application\HR_Management_Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\HR_Management_Infrastructure\HR_Management_Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\HR_Management_Persistence\HR_Management_Persistence.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.2.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+  </ItemGroup>
+
+</Project>

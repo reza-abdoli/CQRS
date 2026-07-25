@@ -12,7 +12,7 @@ namespace HR_Management_Persistence
 {
     public static class PersistenceServiceRegistration
     {
-        public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<LeaveManagementDbContext>(options =>
             {

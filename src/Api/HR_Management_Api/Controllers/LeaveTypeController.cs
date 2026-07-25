@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using HR_Management_Application.Dtos;
+using HR_Management_Application.Dtos.LeaveType;
+using HR_Management_Application.Features.LeaveType.Requests;
+using HR_Management_Application.Features.LeaveType.Requests.Commands;
+using HR_Management_Application.Features.LeaveType.Requests.Queries;
+using HR_Management_Domain;
+using HR_Management_Persistence;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace HR_Management_Api.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class LeaveTypeController : ControllerBase
+    {
+        public readonly IMediator _mediator;
+
+        public LeaveTypeController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+        // GET: api/LeaveTypes
+        [HttpGet]
+        public async Task<ActionResult<List<LeaveType>>> GetLeaveTypes()
+        {
+            var leaveTypes = await _mediator.Send(new GetLeaveTypeListRequest());
+            return Ok(leaveTypes);
+        }
+
+        // GET: api/LeaveTypes/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<LeaveType>> GetLeaveType(int id)
+        {
+            var leaveType = await _mediator.Send(new GetLeaveTypeDetailRequest { Id = id });
+            return Ok(leaveType);
+
+        }
+
+        // POST: api/LeaveTypes
+        [HttpPost]
+        public async Task<ActionResult<LeaveType>> PostLeaveType([FromBody] CreateLeaveTypeDto createLeaveTypeDto)
+        {
+            var response = await _mediator.Send(new CreateLeaveTypeCommand { CreateLeaveTypeDto = createLeaveTypeDto });
+
+            return response.Success ? Ok(response) : BadRequest(response);
+        }
+
+        // PUT: api/LeaveTypes/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutLeaveType(int id, LeaveType leaveType)
+        {
+            await _mediator.Send(new UpdateLeaveTypeCommand { LeaveTypeDto = new LeaveTypeDto { Id = id, Name = leaveType.Name, DefaultDay = leaveType.DefaultDay } });
+
+            return NoContent();
+        }
+
+
+
+        // DELETE: api/LeaveTypes/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteLeaveType(int id)
+        {
+            await _mediator.Send(new DeleteLeaveTypeCommand { Id = id });
+
+            return NoContent();
+        }
+
+    }
+}
