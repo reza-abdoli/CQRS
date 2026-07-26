@@ -6,7 +6,7 @@ using HR_Management_Application.Dtos.Common;
 
 namespace HR_Management_Application.Dtos.LeaveType
 {
-    public class CreateLeaveTypeDto : BaseDto,ILeaveTypeDto
+    public class CreateLeaveTypeDto : ILeaveTypeDto
     {
         public string Name { get; set; }
         public int DefaultDay { get; set; }

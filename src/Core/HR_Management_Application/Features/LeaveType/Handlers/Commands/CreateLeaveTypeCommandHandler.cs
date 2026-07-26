@@ -31,7 +31,7 @@ namespace HR_Management_Application.Features.LeaveType.Handlers.Commands
             // in this case, im not using the validator to validate the request, i used response to return the validation errors to the client
             var validator = new CreateLeaveTypeDtoValidator();
             var res = await validator.ValidateAsync(request.CreateLeaveTypeDto);
-            if (res.IsValid != false)
+            if (res.IsValid == false)
             {
                 // throw new ValidationException(res);
                 response.Success = false;
