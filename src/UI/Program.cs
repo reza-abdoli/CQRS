@@ -1,4 +1,5 @@
 using System.Reflection;
+using Hanssens.Net;
 using UI.Contracts;
 using UI.Services;
 using UI.Services.Base;
@@ -11,7 +12,10 @@ builder.Services.AddHttpClient<IClient, Client>(client =>
     client.BaseAddress = new Uri(builder.Configuration.GetSection("ApiAddress").Value);
 });
 builder.Services.AddSingleton<ILoacalStorageService, LoacalStorageService>();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(cfg => { }, Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<ILoacalStorageService,LoacalStorageService>();
+
+builder.Services.AddScoped<ILeaveTypeService,LeaveTypeService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

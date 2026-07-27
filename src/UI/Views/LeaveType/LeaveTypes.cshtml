@@ -1,0 +1,62 @@
+@model IEnumerable<UI.Models.LeaveTypeVM>
+
+@{
+    ViewData["Title"] = "مدیریت انواع مرخصی";
+}
+
+<h2>مدیریت انواع مرخصی</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">افزودن نوع جدید</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>نام</th>
+            <th>تعداد روز</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.DefaultDay</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">ویرایش</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">جزئیات</a>
+                        <button onclick="deleteItem(@item.Id)" class="btn btn-danger btn-sm">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">هیچ نوع مرخصی ثبت نشده است</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- فرم مخفی برای حذف -->
+<form asp-action="Delete" method="post" id="deleteForm">
+    <input type="hidden" name="id" id="deleteId" />
+</form>
+
+@section Scripts {
+    <script>
+        function deleteItem(id) {
+            if (confirm('آیا از حذف این نوع مرخصی اطمینان دارید؟')) {
+                document.getElementById('deleteId').value = id;
+                document.getElementById('deleteForm').submit();
+            }
+        }
+    </script>
+}

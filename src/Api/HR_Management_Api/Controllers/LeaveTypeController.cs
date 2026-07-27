@@ -27,7 +27,7 @@ namespace HR_Management_Api.Controllers
         }
         // GET: api/LeaveTypes
         [HttpGet]
-        public async Task<ActionResult<List<LeaveType>>> GetLeaveTypes()
+        public async Task<ActionResult<List<LeaveTypeDto>>> GetLeaveTypes()
         {
             var leaveTypes = await _mediator.Send(new GetLeaveTypeListRequest());
             return Ok(leaveTypes);
@@ -53,9 +53,9 @@ namespace HR_Management_Api.Controllers
 
         // PUT: api/LeaveTypes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLeaveType(int id, LeaveType leaveType)
+        public async Task<IActionResult> PutLeaveType(int id, LeaveTypeDto leaveTypeDto)
         {
-            await _mediator.Send(new UpdateLeaveTypeCommand { LeaveTypeDto = new LeaveTypeDto { Id = id, Name = leaveType.Name, DefaultDay = leaveType.DefaultDay } });
+            await _mediator.Send(new UpdateLeaveTypeCommand { LeaveTypeDto = new LeaveTypeDto { Id = id, Name = leaveTypeDto.Name, DefaultDay = leaveTypeDto.DefaultDay } });
 
             return NoContent();
         }

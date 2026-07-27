@@ -13,7 +13,7 @@ namespace HR_Management_Application
         public static void ConfigureApplicationServices(this IServiceCollection services)
         {
             // services.AddAutoMapper(typeof(MappingProfile));
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(cfg => { }, Assembly.GetExecutingAssembly());
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         }
     }
