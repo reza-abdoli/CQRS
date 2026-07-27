@@ -7,6 +7,7 @@ using HR_Management_Application.Dtos.LeaveType;
 using HR_Management_Application.Features.LeaveType.Requests;
 using HR_Management_Application.Features.LeaveType.Requests.Commands;
 using HR_Management_Application.Features.LeaveType.Requests.Queries;
+using HR_Management_Application.Responses;
 using HR_Management_Domain;
 using HR_Management_Persistence;
 using MediatR;
@@ -43,7 +44,7 @@ namespace HR_Management_Api.Controllers
 
         // POST: api/LeaveTypes
         [HttpPost]
-        public async Task<ActionResult<LeaveType>> PostLeaveType([FromBody] CreateLeaveTypeDto createLeaveTypeDto)
+        public async Task<ActionResult<BaseCommandResponse>> PostLeaveType([FromBody] CreateLeaveTypeDto createLeaveTypeDto)
         {
             var response = await _mediator.Send(new CreateLeaveTypeCommand { CreateLeaveTypeDto = createLeaveTypeDto });
 

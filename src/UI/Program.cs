@@ -1,4 +1,17 @@
+using System.Reflection;
+using UI.Contracts;
+using UI.Services;
+using UI.Services.Base;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddHttpClient<IClient, Client>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration.GetSection("ApiAddress").Value);
+});
+builder.Services.AddSingleton<ILoacalStorageService, LoacalStorageService>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -11,8 +11,10 @@ using HR_Management_Application.Features.LeaveType.Handlers.Queries;
 using HR_Management_Application.Features.LeaveType.Requests;
 using HR_Management_Application.Features.LeaveType.Requests.Commands;
 using HR_Management_Application.Profiles;
+using HR_Management_Application.Responses;
 using HR_Management_UnitTests.Mock;
 using Moq;
+using Shouldly;
 
 namespace HR_Management_UnitTests.LeaveTypes.Commands
 {
@@ -42,6 +44,8 @@ namespace HR_Management_UnitTests.LeaveTypes.Commands
 
             // we should check id of added leaveType which is Test Leave Type
             Assert.True(result.Success);
+
+            result.ShouldBeOfType<BaseCommandResponse>();
 
             Assert.Equal(3, result.Id);
         }
