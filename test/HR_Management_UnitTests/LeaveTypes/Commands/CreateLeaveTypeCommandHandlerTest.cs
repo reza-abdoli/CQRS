@@ -13,6 +13,7 @@ using HR_Management_Application.Features.LeaveType.Requests.Commands;
 using HR_Management_Application.Profiles;
 using HR_Management_Application.Responses;
 using HR_Management_UnitTests.Mock;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Shouldly;
 
@@ -25,7 +26,9 @@ namespace HR_Management_UnitTests.LeaveTypes.Commands
         private CreateLeaveTypeDto _createLeaveTypeDto;
         public CreateLeaveTypeCommandHandlerTest()
         {
-            _mapper = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()).CreateMapper();
+            _mapper = new MapperConfiguration(
+                cfg => { cfg.AddProfile<MappingProfile>(); }, LoggerFactory.Create(builder => { }))
+                .CreateMapper();
             _mockRepo = MockLeaveTypeRepository.mockLeaveTypeRepository();
             _createLeaveTypeDto = new CreateLeaveTypeDto()
             {

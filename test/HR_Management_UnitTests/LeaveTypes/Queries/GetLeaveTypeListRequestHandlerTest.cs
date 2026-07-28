@@ -9,6 +9,7 @@ using HR_Management_Application.Features.LeaveType.Handlers.Queries;
 using HR_Management_Application.Features.LeaveType.Requests;
 using HR_Management_Application.Profiles;
 using HR_Management_UnitTests.Mock;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Shouldly;
 
@@ -20,7 +21,16 @@ namespace HR_Management_UnitTests.LeaveTypes
         private Mock<ILeaveTypeRepository> _mockRepo;
         public GetLeaveTypeListRequestHandlerTest()
         {
-            _mapper = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()).CreateMapper();
+            _mapper = new MapperConfiguration(
+                cfg => { cfg.AddProfile<MappingProfile>(); },LoggerFactory.Create(builder => { }))
+                .CreateMapper();
+            // var configuration = new MapperConfiguration(
+            //                                     cfg =>
+            //                                     {
+            //                                         cfg.AddProfile<MappingProfile>();
+            //                                     },
+            //                                     LoggerFactory.Create(builder => { }));
+            // _mapper = configuration.CreateMapper();
             _mockRepo = MockLeaveTypeRepository.mockLeaveTypeRepository();
         }
 
