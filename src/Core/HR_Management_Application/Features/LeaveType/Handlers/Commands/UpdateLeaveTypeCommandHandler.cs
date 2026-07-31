@@ -27,7 +27,7 @@ namespace HR_Management_Application.Features.LeaveType.Handlers.Commands
         {
             var validator = new UpdateLeaveTypeValidator();
             var res = await validator.ValidateAsync(request.LeaveTypeDto);
-            if (res.IsValid != false)
+            if (res.IsValid == false)
             {
                 throw new ValidationException(res);
             }

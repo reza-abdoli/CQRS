@@ -35,10 +35,10 @@ namespace HR_Management_Api.Controllers
 
         // GET: api/LeaveTypes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<LeaveType>> GetLeaveType(int id)
+        public async Task<ActionResult<LeaveTypeDto>> GetLeaveType(int id)
         {
-            var leaveType = await _mediator.Send(new GetLeaveTypeDetailRequest { Id = id });
-            return Ok(leaveType);
+            var leaveTypeDto = await _mediator.Send(new GetLeaveTypeDetailRequest { Id = id });
+            return Ok(leaveTypeDto);
 
         }
 
@@ -57,7 +57,7 @@ namespace HR_Management_Api.Controllers
         {
             await _mediator.Send(new UpdateLeaveTypeCommand { LeaveTypeDto = new LeaveTypeDto { Id = id, Name = leaveTypeDto.Name, DefaultDay = leaveTypeDto.DefaultDay } });
 
-            return NoContent();
+            return Ok();
         }
 
 
@@ -68,7 +68,7 @@ namespace HR_Management_Api.Controllers
         {
             await _mediator.Send(new DeleteLeaveTypeCommand { Id = id });
 
-            return NoContent();
+            return Ok();
         }
 
     }

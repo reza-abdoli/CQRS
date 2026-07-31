@@ -1,0 +1,43 @@
+@model UI.Models.LeaveTypeVM
+
+@{
+    ViewData["Title"] = "جزئیات نوع مرخصی";
+}
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-eye me-2"></i>
+                        جزئیات نوع مرخصی
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">شناسه</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4 text-muted">نام نوع مرخصی</dt>
+                        <dd class="col-sm-8">@Model.Name</dd>
+
+                        <dt class="col-sm-4 text-muted">تعداد روز پیش‌فرض</dt>
+                        <dd class="col-sm-8">@Model.DefaultDay روز</dd>
+                    </dl>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="LeaveTypes" asp-controller="LeaveType" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-right me-1"></i>
+                            بازگشت
+                        </a>
+                        <a asp-action="EditLeaveTypes" asp-controller="LeaveType" asp-route-id="@Model.Id" class="btn btn-primary">
+                            <i class="bi bi-pencil-square me-1"></i>
+                            ویرایش
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

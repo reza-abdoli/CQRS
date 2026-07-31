@@ -1,0 +1,55 @@
+@model UI.Models.LeaveTypeVM
+
+@{
+    ViewData["Title"] = "ویرایش نوع مرخصی";
+}
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        ویرایش نوع مرخصی
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="EditLeaveTypes" asp-controller="LeaveType" asp-route-id="@Model.Id" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">نام نوع مرخصی</label>
+                            <input asp-for="Name" class="form-control" placeholder="مثلاً: مرخصی استعلاجی" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">تعداد روز پیش‌فرض</label>
+                            <input asp-for="DefaultDay" type="number" class="form-control" placeholder="تعداد روز پیش‌فرض" />
+                            <span asp-validation-for="DefaultDay" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-action="LeaveTypes" asp-controller="LeaveType" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-right me-1"></i>
+                                بازگشت
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-lg me-1"></i>
+                                ذخیره تغییرات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
