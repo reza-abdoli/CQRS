@@ -13,7 +13,7 @@ namespace HR_Management_Identity.Configurations
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            var hasher = new PasswordHasher<ApplicationUser>();
+            // var hasher = new PasswordHasher<ApplicationUser>();
             builder.HasData(
                 new ApplicationUser
                 {
@@ -24,20 +24,24 @@ namespace HR_Management_Identity.Configurations
                     LastName = "Adminian",
                     UserName = "admin@localhost.com",
                     NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                    PasswordHash = hasher.HashPassword(null, "P@ssword1"),
+                    PasswordHash = "AQAAAAIAAYagAAAAEB71srXiOIbY7D54EEJILretQmD+lr/HetNlPZxiL5u/pRvwGv7bBNiVe6jvnyv33g==",
                     EmailConfirmed = true,
+                    SecurityStamp = "STATIC-STAMP-1",
+                    ConcurrencyStamp = "STATIC-CONCURRENCY-1",
                 },
                 new ApplicationUser
                 {
                     Id = "b77117e8-ebf3-41f9-8f69-65b928a2257e",
                     Email = "User@localhost.com",
-                    NormalizedEmail = "User@LOCALHOST.COM",
+                    NormalizedEmail = "USER@LOCALHOST.COM",
                     FirstName = "System",
                     LastName = "User",
                     UserName = "User@localhost.com",
-                    NormalizedUserName = "User@LOCALHOST.COM",
-                    PasswordHash = hasher.HashPassword(null, "P@ssword1"),
+                    NormalizedUserName = "USER@LOCALHOST.COM",
+                    PasswordHash = "AQAAAAIAAYagAAAAEB71srXiOIbY7D54EEJILretQmD+lr/HetNlPZxiL5u/pRvwGv7bBNiVe6jvnyv33g==",
                     EmailConfirmed = true,
+                    SecurityStamp = "STATIC-STAMP-2",
+                    ConcurrencyStamp = "STATIC-CONCURRENCY-2",
                 }
             );
 

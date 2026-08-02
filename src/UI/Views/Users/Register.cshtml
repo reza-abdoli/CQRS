@@ -1,0 +1,91 @@
+@model UI.Models.RegisterVM
+
+@{
+    ViewData["Title"] = "ثبت‌نام";
+    Layout = "_Layout"; // اگه لایه‌ی جدا برای صفحات auth ندارید، این خط رو حذف کنید
+}
+
+<div class="d-flex align-items-center justify-content-center min-vh-100 bg-dark">
+    <div class="col-11 col-sm-8 col-md-6 col-lg-5">
+        <div class="card bg-black bg-opacity-75 border-secondary shadow-lg text-white">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-person-plus-fill display-4 text-primary"></i>
+                    <h4 class="mt-2 mb-0">ایجاد حساب کاربری</h4>
+                    <p class="text-muted small">برای شروع، فرم زیر را تکمیل کنید</p>
+                </div>
+
+                <form asp-action="Register" asp-controller="Users" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="FirstName" class="form-label">نام</label>
+                            <input asp-for="FirstName" class="form-control bg-transparent text-white border-secondary"
+                                   placeholder="نام" />
+                            <span asp-validation-for="FirstName" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="LastName" class="form-label">نام خانوادگی</label>
+                            <input asp-for="LastName" class="form-control bg-transparent text-white border-secondary"
+                                   placeholder="نام خانوادگی" />
+                            <span asp-validation-for="LastName" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="UserName" class="form-label">نام کاربری</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent text-white border-secondary">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <input asp-for="UserName" class="form-control bg-transparent text-white border-secondary"
+                                   placeholder="نام کاربری" autocomplete="username" />
+                        </div>
+                        <span asp-validation-for="UserName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">ایمیل</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent text-white border-secondary">
+                                <i class="bi bi-envelope"></i>
+                            </span>
+                            <input asp-for="Email" class="form-control bg-transparent text-white border-secondary"
+                                   placeholder="example@email.com" />
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label">رمز عبور</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent text-white border-secondary">
+                                <i class="bi bi-lock"></i>
+                            </span>
+                            <input asp-for="Password" class="form-control bg-transparent text-white border-secondary"
+                                   placeholder="••••••••" autocomplete="new-password" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-person-check me-1"></i>
+                        ثبت‌نام
+                    </button>
+
+                    <p class="text-center text-muted small mt-3 mb-0">
+                        قبلاً حساب کاربری دارید؟
+                        <a asp-controller="Users" asp-action="Login" class="text-primary">وارد شوید</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

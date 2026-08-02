@@ -27,6 +27,8 @@ namespace UI.Services
                 CreateLeaveTypeDto createLeaveTypeDto =
                      _mapper.Map<CreateLeaveTypeDto>(createLeaveTypeVM);
 
+                AddBearerToken();
+
                 var apiResponse = await _client.LeaveTypePOSTAsync(createLeaveTypeDto);
                 if (apiResponse.Success)
                 {
@@ -53,6 +55,8 @@ namespace UI.Services
         {
             try
             {
+                AddBearerToken();
+
                 await _client.LeaveTypeDELETEAsync(id);
                 return new Responses<int> { Success = true };
             }
@@ -64,6 +68,8 @@ namespace UI.Services
 
         public async Task<LeaveTypeVM> GetLeaveTypeDetail(int id)
         {
+            AddBearerToken();
+
             var LeaveTypeDto = await _client.LeaveTypeGETAsync(id);
             return _mapper.Map<LeaveTypeVM>(LeaveTypeDto);
 
@@ -71,6 +77,8 @@ namespace UI.Services
 
         public async Task<List<LeaveTypeVM>> GetLeaveTypes()
         {
+            AddBearerToken();
+
             var leaveTypeDtos = await _client.LeaveTypeAllAsync();
             return _mapper.Map<List<LeaveTypeVM>>(leaveTypeDtos);
         }
@@ -79,6 +87,8 @@ namespace UI.Services
         {
             try
             {
+                AddBearerToken();
+
                 var updateLeaveTypeDto = _mapper.Map<LeaveTypeDto>(leaveTypeVM);
 
                 await _client.LeaveTypePUTAsync(id, updateLeaveTypeDto);

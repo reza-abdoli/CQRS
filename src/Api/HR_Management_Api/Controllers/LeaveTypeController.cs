@@ -11,12 +11,14 @@ using HR_Management_Application.Responses;
 using HR_Management_Domain;
 using HR_Management_Persistence;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR_Management_Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]    
     public class LeaveTypeController : ControllerBase
     {
         public readonly IMediator _mediator;
@@ -27,6 +29,8 @@ namespace HR_Management_Api.Controllers
         }
         // GET: api/LeaveTypes
         [HttpGet]
+        // [Authorize]
+
         public async Task<ActionResult<List<LeaveTypeDto>>> GetLeaveTypes()
         {
             var leaveTypes = await _mediator.Send(new GetLeaveTypeListRequest());

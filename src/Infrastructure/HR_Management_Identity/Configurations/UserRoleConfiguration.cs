@@ -17,13 +17,15 @@ namespace HR_Management_Identity.Configurations
                 {
                     Id = "079a5e10-e45f-4656-80c7-577664d64fc1",
                     Name = "Employee",
-                    NormalizedName = "EMPLOYEE"
+                    NormalizedName = "EMPLOYEE",
+                    ConcurrencyStamp = "STATIC-ROLE-STAMP-1"
                 },
                 new IdentityRole
                 {
                     Id = "74a7df0b-6d11-42ca-95d6-bb0d7204d007",
                     Name = "administrator",
-                    NormalizedName = "ADMINISTRATOR"
+                    NormalizedName = "ADMINISTRATOR",
+                    ConcurrencyStamp = "STATIC-ROLE-STAMP-2"
                 }
             );
         }

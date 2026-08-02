@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace HR_Management_Api.Controllers
 {
     // [Route("[controller]")]
+    [ApiController]
     public class AccountController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -21,14 +22,14 @@ namespace HR_Management_Api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
+        public async Task<ActionResult<AuthResponse>> Login([FromBody] AuthRequest request)
         {
             var response = await _authService.Login(request);
             return Ok(response);
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<RegistrationResponse>> Register(RegistrationRequest request)
+        public async Task<ActionResult<RegistrationResponse>> Register([FromBody] RegistrationRequest request)
         {
             var response = await _authService.Register(request);
             return Ok(response);

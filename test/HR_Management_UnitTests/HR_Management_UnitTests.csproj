@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Core\HR_Management_Domain\HR_Management_Domain.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\HR_Management_Persistence\HR_Management_Persistence.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\HR_Management_Identity\HR_Management_Identity.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -14,6 +15,8 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.10" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="Shouldly" Version="4.3.0" />
